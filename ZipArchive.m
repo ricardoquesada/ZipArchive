@@ -22,6 +22,7 @@
 -(void) OutputErrorMessage:(NSString*) msg;
 -(BOOL) OverWrite:(NSString*) file;
 -(NSDate*) Date1980;
+-(void) DoUnzipProgress:(uLong)myCurrentFileIndex;
 
 @property (nonatomic,copy) NSString* password;
 @end
@@ -38,6 +39,7 @@
 	if( self=[super init] )
 	{
 		_zipFile = NULL ;
+		_totalFileCount = 0;
 	}
 	return self;
 }
@@ -176,6 +178,7 @@
 
 -(BOOL) CloseZipFile2
 {
+    _totalFileCount = 0;
 	self.password = nil;
 	if( _zipFile==NULL )
 		return NO;
@@ -204,6 +207,7 @@
 		if( unzGetGlobalInfo(_unzFile, &globalInfo )==UNZ_OK )
 		{
 			NSLog(@"%d entries in the zip file", globalInfo.number_entry);
+			 _totalFileCount = globalInfo.number_entry;
 		}
 	}
 	return _unzFile!=NULL;
@@ -248,6 +252,8 @@
 		[self OutputErrorMessage:@"Failed"];
 	}
 	
+	uLong kFileCount = 0;
+	   
 	do{
 		if( [_password length]==0 )
 			ret = unzOpenCurrentFile( _unzFile );
@@ -318,37 +324,48 @@
 		if( fp )
 		{
 			fclose( fp );
-            
-            // add the full path of this file to the output array
-            [(NSMutableArray*)_unzippedFiles addObject:fullPath];
-            
-			// set the orignal datetime property
-			if( fileInfo.dosDate!=0 )
-			{
-				NSDate* orgDate = [[NSDate alloc] 
-								   initWithTimeInterval:(NSTimeInterval)fileInfo.dosDate 
-								   sinceDate:[self Date1980] ];
+                    // set the orignal datetime property
+                    NSDate* orgDate = nil;
 
-				NSDictionary* attr = [NSDictionary dictionaryWithObject:orgDate forKey:NSFileModificationDate]; //[[NSFileManager defaultManager] fileAttributesAtPath:fullPath traverseLink:YES];
-				if( attr )
-				{
-				//	[attr  setValue:orgDate forKey:NSFileCreationDate];
-					if( ![[NSFileManager defaultManager] setAttributes:attr ofItemAtPath:fullPath error:nil] )
-					{
-						// cann't set attributes 
-						NSLog(@"Failed to set attributes");
-					}
-					
-				}
-				[orgDate release];
-				orgDate = nil;
-			}
-			
-		}
-		unzCloseCurrentFile( _unzFile );
-		ret = unzGoToNextFile( _unzFile );
-	}while( ret==UNZ_OK && UNZ_OK!=UNZ_END_OF_LIST_OF_FILE );
-	return success;
+                    //{{ thanks to brad.eaton for the solution
+                    NSDateComponents *dc = [[NSDateComponents alloc] init];
+
+                    dc.second = fileInfo.tmu_date.tm_sec;
+                    dc.minute = fileInfo.tmu_date.tm_min;
+                    dc.hour = fileInfo.tmu_date.tm_hour;
+                    dc.day = fileInfo.tmu_date.tm_mday;
+                    dc.month = fileInfo.tmu_date.tm_mon+1;
+                    dc.year = fileInfo.tmu_date.tm_year;
+
+                    NSCalendar *gregorian = [[NSCalendar alloc] 
+                                                                     initWithCalendarIdentifier:NSGregorianCalendar];
+
+                    orgDate = [gregorian dateFromComponents:dc] ;
+                    [dc release];
+                    [gregorian release];
+                    //}}
+
+
+                    NSDictionary* attr = [NSDictionary dictionaryWithObject:orgDate forKey:NSFileModificationDate]; //[[NSFileManager defaultManager] fileAttributesAtPath:fullPath traverseLink:YES];
+                    if( attr )
+                    {
+                            //              [attr  setValue:orgDate forKey:NSFileCreationDate];
+                            if( ![[NSFileManager defaultManager] setAttributes:attr ofItemAtPath:fullPath error:nil] )
+                            {
+                                    // cann't set attributes 
+                                    NSLog(@"Failed to set attributes");
+                            }
+
+                    }
+
+                    kFileCount++;
+                    [self DoUnzipProgress:kFileCount];
+
+                    }
+                    unzCloseCurrentFile( _unzFile );
+                    ret = unzGoToNextFile( _unzFile );
+            }while( ret==UNZ_OK && UNZ_OK!=UNZ_END_OF_LIST_OF_FILE );
+            return success;
 }
 
 /**
@@ -458,6 +475,14 @@
 		return [_delegate OverWriteOperation:file];
 	return YES;
 }
+
+
+-(void) DoUnzipProgress:(uLong)myCurrentFileIndex
+{
+    if( _delegate && [_delegate respondsToSelector:@selector(UnzipProgress:total:)] )
+                [_delegate UnzipProgress:myCurrentFileIndex total:_totalFileCount];
+}
+
 
 #pragma mark get NSDate object for 1980-01-01
 -(NSDate*) Date1980

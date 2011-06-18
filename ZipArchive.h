@@ -47,6 +47,10 @@
 
 -(BOOL) OverWriteOperation:(NSString*) file;
 
+
+-(void) UnzipProgress:(uLong)myCurrentFileIndex total:(uLong)myTotalFileCount;
+
+
 @end
 
 /**
@@ -59,14 +63,16 @@
     and extract the files.
 */
 
+
+
 @interface ZipArchive : NSObject {
 @private
 	zipFile		_zipFile;
 	unzFile		_unzFile;
 	
 	NSString*   _password;
-	id			_delegate;
-    
+    id<ZipArchiveDelegate>                  _delegate;
+    uLong       _totalFileCount;
     NSArray*    _unzippedFiles;
 }
 
