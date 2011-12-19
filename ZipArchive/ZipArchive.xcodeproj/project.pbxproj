@@ -21,6 +21,13 @@
 		C9E8EBF6124F3D030047C862 /* zip.h in Headers */ = {isa = PBXBuildFile; fileRef = C9E8EBEC124F3D030047C862 /* zip.h */; };
 		C9E8EBF9124F3D170047C862 /* ZipArchive.h in Headers */ = {isa = PBXBuildFile; fileRef = C9E8EBF7124F3D170047C862 /* ZipArchive.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C9E8EBFA124F3D170047C862 /* ZipArchive.m in Sources */ = {isa = PBXBuildFile; fileRef = C9E8EBF8124F3D170047C862 /* ZipArchive.m */; };
+		D503DFF614937DC6000AD83B /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D503DFF514937DC6000AD83B /* SenTestingKit.framework */; };
+		D503DFF814937DC6000AD83B /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D503DFF714937DC6000AD83B /* UIKit.framework */; };
+		D503DFF914937DC6000AD83B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AACBBE490F95108600F1A2B1 /* Foundation.framework */; };
+		D503DFFF14937DC7000AD83B /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = D503DFFD14937DC7000AD83B /* InfoPlist.strings */; };
+		D503E00214937DC7000AD83B /* ZipArchiveTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D503E00114937DC7000AD83B /* ZipArchiveTests.m */; };
+		D503E00714937E38000AD83B /* libZipArchive.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D2AAC07E0554694100DB518D /* libZipArchive.a */; };
+		D503E00814937EB3000AD83B /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = C9E8EBDB124F3CD70047C862 /* libz.dylib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -39,6 +46,14 @@
 		C9E8EBF7124F3D170047C862 /* ZipArchive.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ZipArchive.h; path = ../ZipArchive.h; sourceTree = "<group>"; };
 		C9E8EBF8124F3D170047C862 /* ZipArchive.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ZipArchive.m; path = ../ZipArchive.m; sourceTree = "<group>"; };
 		D2AAC07E0554694100DB518D /* libZipArchive.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libZipArchive.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		D503DFF414937DC6000AD83B /* ZipArchiveTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ZipArchiveTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
+		D503DFF514937DC6000AD83B /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
+		D503DFF714937DC6000AD83B /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
+		D503DFFC14937DC6000AD83B /* ZipArchiveTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ZipArchiveTests-Info.plist"; sourceTree = "<group>"; };
+		D503DFFE14937DC7000AD83B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		D503E00014937DC7000AD83B /* ZipArchiveTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZipArchiveTests.h; sourceTree = "<group>"; };
+		D503E00114937DC7000AD83B /* ZipArchiveTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZipArchiveTests.m; sourceTree = "<group>"; };
+		D503E00314937DC7000AD83B /* ZipArchiveTests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ZipArchiveTests-Prefix.pch"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,6 +66,18 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		D503DFF014937DC6000AD83B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D503E00814937EB3000AD83B /* libz.dylib in Frameworks */,
+				D503E00714937E38000AD83B /* libZipArchive.a in Frameworks */,
+				D503DFF614937DC6000AD83B /* SenTestingKit.framework in Frameworks */,
+				D503DFF814937DC6000AD83B /* UIKit.framework in Frameworks */,
+				D503DFF914937DC6000AD83B /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -58,6 +85,7 @@
 			isa = PBXGroup;
 			children = (
 				D2AAC07E0554694100DB518D /* libZipArchive.a */,
+				D503DFF414937DC6000AD83B /* ZipArchiveTests.octest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -67,6 +95,7 @@
 			children = (
 				08FB77AEFE84172EC02AAC07 /* Source */,
 				32C88DFF0371C24200C91783 /* Other Sources */,
+				D503DFFA14937DC6000AD83B /* ZipArchiveTests */,
 				0867D69AFE84028FC02AAC07 /* Frameworks */,
 				034768DFFF38A50411DB9C8B /* Products */,
 			);
@@ -78,6 +107,8 @@
 			children = (
 				AACBBE490F95108600F1A2B1 /* Foundation.framework */,
 				C9E8EBDB124F3CD70047C862 /* libz.dylib */,
+				D503DFF514937DC6000AD83B /* SenTestingKit.framework */,
+				D503DFF714937DC6000AD83B /* UIKit.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -117,6 +148,34 @@
 			path = ../minizip;
 			sourceTree = SOURCE_ROOT;
 		};
+		D503DFFA14937DC6000AD83B /* ZipArchiveTests */ = {
+			isa = PBXGroup;
+			children = (
+				D503E00014937DC7000AD83B /* ZipArchiveTests.h */,
+				D503E00114937DC7000AD83B /* ZipArchiveTests.m */,
+				D503E00914938ECE000AD83B /* Resources */,
+				D503DFFB14937DC6000AD83B /* Supporting Files */,
+			);
+			path = ZipArchiveTests;
+			sourceTree = "<group>";
+		};
+		D503DFFB14937DC6000AD83B /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				D503DFFC14937DC6000AD83B /* ZipArchiveTests-Info.plist */,
+				D503DFFD14937DC7000AD83B /* InfoPlist.strings */,
+				D503E00314937DC7000AD83B /* ZipArchiveTests-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		D503E00914938ECE000AD83B /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -154,6 +213,24 @@
 			productReference = D2AAC07E0554694100DB518D /* libZipArchive.a */;
 			productType = "com.apple.product-type.library.static";
 		};
+		D503DFF314937DC6000AD83B /* ZipArchiveTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D503E00414937DC7000AD83B /* Build configuration list for PBXNativeTarget "ZipArchiveTests" */;
+			buildPhases = (
+				D503DFEF14937DC6000AD83B /* Sources */,
+				D503DFF014937DC6000AD83B /* Frameworks */,
+				D503DFF114937DC6000AD83B /* Resources */,
+				D503DFF214937DC6000AD83B /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ZipArchiveTests;
+			productName = ZipArchiveTests;
+			productReference = D503DFF414937DC6000AD83B /* ZipArchiveTests.octest */;
+			productType = "com.apple.product-type.bundle";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -168,6 +245,7 @@
 				Japanese,
 				French,
 				German,
+				en,
 			);
 			mainGroup = 0867D691FE84028FC02AAC07 /* ZipArchive */;
 			productRefGroup = 034768DFFF38A50411DB9C8B /* Products */;
@@ -175,9 +253,37 @@
 			projectRoot = "";
 			targets = (
 				D2AAC07D0554694100DB518D /* ZipArchive */,
+				D503DFF314937DC6000AD83B /* ZipArchiveTests */,
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		D503DFF114937DC6000AD83B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D503DFFF14937DC7000AD83B /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		D503DFF214937DC6000AD83B /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		D2AAC07B0554694100DB518D /* Sources */ = {
@@ -192,7 +298,26 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		D503DFEF14937DC6000AD83B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D503E00214937DC7000AD83B /* ZipArchiveTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		D503DFFD14937DC7000AD83B /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D503DFFE14937DC7000AD83B /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		1DEB921F08733DC00010E9CD /* Debug */ = {
@@ -240,7 +365,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				OTHER_LDFLAGS = "-ObjC";
 				PREBINDING = NO;
-				SDKROOT = iphoneos4.1;
+				SDKROOT = iphoneos;
 			};
 			name = Debug;
 		};
@@ -253,7 +378,58 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				OTHER_LDFLAGS = "-ObjC";
 				PREBINDING = NO;
-				SDKROOT = iphoneos4.1;
+				SDKROOT = iphoneos;
+			};
+			name = Release;
+		};
+		D503E00514937DC7000AD83B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				COPY_PHASE_STRIP = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(DEVELOPER_LIBRARY_DIR)/Frameworks",
+				);
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "ZipArchiveTests/ZipArchiveTests-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				INFOPLIST_FILE = "ZipArchiveTests/ZipArchiveTests-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Debug;
+		};
+		D503E00614937DC7000AD83B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				COPY_PHASE_STRIP = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(DEVELOPER_LIBRARY_DIR)/Frameworks",
+				);
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "ZipArchiveTests/ZipArchiveTests-Prefix.pch";
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				INFOPLIST_FILE = "ZipArchiveTests/ZipArchiveTests-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				VALIDATE_PRODUCT = YES;
+				WRAPPER_EXTENSION = octest;
 			};
 			name = Release;
 		};
@@ -277,6 +453,14 @@
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
+		};
+		D503E00414937DC7000AD83B /* Build configuration list for PBXNativeTarget "ZipArchiveTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D503E00514937DC7000AD83B /* Debug */,
+				D503E00614937DC7000AD83B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
 		};
 /* End XCConfigurationList section */
 	};
